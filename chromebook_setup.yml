@@ -51,10 +51,10 @@
     ## VSCode IDE
     - include_tasks: ./includes/vscode.yml
       name: run vscode stup
-      when: vscode_include and vscode_include is defined
+      when: (vscode_include and vscode_include is defined) and ('"arm" not in ansible_architecture') 
     - include_tasks: "{{ vscode_custom_include }}"
       name: run vscode custom setup
-      when: vscode_include and vscode_custom_include is defined
+      when: (vscode_include and vscode_include is defined) and ('"arm" not in ansible_architecture')
     ## Terraform 
     - include_tasks: ./includes/terraform.yml
       name: run terraform setup
@@ -76,14 +76,14 @@
     - include_tasks: "{{ gimp_custom_include }}"
       name: run gimp custom setup
       when: gimp_include and gimp_custom_include is defined
-    ## Master PDF Editor 
+    ## Master PDF Editor
     - include_tasks: ./includes/master_pdf.yml
       name: run master_pdf setup
-      when: master_pdf_include and master_pdf_include is defined
+      when: (master_pdf_include and master_pdf_include is defined) and ('"arm" not in ansible_architecture')
     - include_tasks: "{{ master_pdf_custom_include }}"
       name: run master_pdf custom setup
-      when: master_pdf_include and master_pdf_custom_include is defined
-    ## User defined task list 
+      when: (master_pdf_include and master_pdf_include is defined) and ('"arm" not in ansible_architecture')
+    ## User defined task list
     - include_tasks: "{{ user_defined_custom_include }}"
       name: run user_defined custom setup
       when: user_defined_custom_include is defined
